@@ -21,8 +21,8 @@ fn main() {
     let mut num_coprime = 0;
 
     for _ in 0..ITERATIONS {
-        let x = dist.sample(&mut rng);
-        let y = dist.sample(&mut rng);
+        let x: u32 = dist.sample(&mut rng);
+        let y: u32 = dist.sample(&mut rng);
 
         // x and y are coprime
         if gcd(x, y) == 1 {
@@ -31,6 +31,6 @@ fn main() {
     }
 
     // the odds of two random positive ints being coprime is 6 / pi^2
-    let pi: f64 = (6. * ITERATIONS as f64 / num_coprime as f64).sqrt();
+    let pi: f64 = ((6 * ITERATIONS) as f64 / num_coprime as f64).sqrt();
     println!("π = {}", pi);
 }
