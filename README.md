@@ -1,4 +1,4 @@
-# pi_overkill 0.2
+# pi_overkill 0.2.1
 © Copyright 2020 JonLiuFYI
 
 Discover the value of pi the long way. Fun fact: the probability of two random positive integers being coprime is `6 / pi^2`.
@@ -20,6 +20,13 @@ pi_overkill is distributed in the hope that it will be useful, but WITHOUT ANY W
 You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
 
 ## Changelog
+### 0.2.1
+* Fixed off-by-one error that made one too many Senders
+* Display more information about the pi estimate
+  * Total iterations
+  * Number of threads
+  * Percentage error relative to Rust's builtin `std::f64::consts::PI`
+
 ### 0.2
 * Added multithreading with message passing, but it's hardcoded
   * Enjoy running 12 threads with 4 million iterations each
