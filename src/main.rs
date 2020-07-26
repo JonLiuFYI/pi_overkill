@@ -2,15 +2,18 @@
  * pi_overkill finds the value of pi the long way.
  * © Copyright 2020 JonLiuFYI
  * main.rs is licensed under GPL v3+.
+ *
+ * TODO:
+ * command line args
+ *  * choose iters per thread
+ *  * choose number of threads
+ * progress update
+ * verbose mode (show updates on timeline?)
  */
 use num::integer::gcd;
 use rand::distributions::{Distribution, Uniform};
 use std::sync::mpsc;
 use std::thread;
-/**
- * TODO:
- * command line args
- */
 
 fn main() {
     // parameters

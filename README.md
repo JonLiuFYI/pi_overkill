@@ -1,4 +1,4 @@
-# pi_overkill 0.1
+# pi_overkill 0.2
 © Copyright 2020 JonLiuFYI
 
 Discover the value of pi the long way. Fun fact: the probability of two random positive integers being coprime is `6 / pi^2`.
@@ -6,8 +6,8 @@ Discover the value of pi the long way. Fun fact: the probability of two random p
 Made in Rust.
 
 ## Usage
-* Change the `const`s at the top of main.rs to the values you want.
-* Build and run this project. In the same directory as `Cargo.toml`, use `cargo run --release` in your terminal.
+* Change the parameterss at the top of the `main` function of main.rs to the values you want.
+* Build and run this project. Use `cargo run --release` in your terminal.
 * Rerun this any number of times and see what this program thinks pi is.
 
 ## License
@@ -18,3 +18,8 @@ pi_overkill is free software: you can redistribute it and/or modify it under the
 pi_overkill is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
+
+## Changelog
+### 0.2
+* Added multithreading with message passing, but it's hardcoded
+  * Enjoy running 12 threads with 4 million iterations each
