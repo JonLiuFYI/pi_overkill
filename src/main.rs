@@ -1,26 +1,42 @@
+use num::integer::gcd;
 /**
  * pi_overkill finds the value of pi the long way.
  * © Copyright 2020 JonLiuFYI
- * This file is licensed under GPL v3+.
+ * main.rs is licensed under GPL v3+.
  */
-
 use rand::distributions::{Distribution, Uniform};
-use num::integer::gcd;
 /**
  * TODO:
  * implement multithreading
- * run until ctrl+c
+ * command line args
  */
 
-// configure this program by changing these consts
-const ITERATIONS: u32 = 10_000_000;
-
 fn main() {
+    // parameters
+    let iterations: u32 = 10_000_000;
+    let threads = 1; // TODO
+
+    let num_coprime = count_coprimes(iterations);
+
+    // the probability of two random positive ints being coprime is 6 / pi^2
+    // P = 6 / π²
+    // π = sqrt(6 / P)
+    //      since P = coprimes / total trials
+    // π = sqrt((6 * total trials) / coprimes)
+    let pi: f64 = ((6 * iterations * threads) as f64 / num_coprime as f64).sqrt();
+    println!("π = {}", pi);
+}
+
+/**
+ * Generate two random u32s for each iteration and return how many are coprime.
+ * iters: u32 how many pairs of u32s to generate and check
+ */
+fn count_coprimes(iters: u32) -> u32 {
     let dist = Uniform::from(1..u32::MAX);
     let mut rng = rand::thread_rng();
     let mut num_coprime = 0;
 
-    for _ in 0..ITERATIONS {
+    for _ in 0..iters {
         let x: u32 = dist.sample(&mut rng);
         let y: u32 = dist.sample(&mut rng);
 
@@ -30,7 +46,5 @@ fn main() {
         }
     }
 
-    // the odds of two random positive ints being coprime is 6 / pi^2
-    let pi: f64 = ((6 * ITERATIONS) as f64 / num_coprime as f64).sqrt();
-    println!("π = {}", pi);
+    num_coprime
 }

@@ -7,8 +7,8 @@ Made in Rust.
 
 ## Usage
 * Change the `const`s at the top of main.rs to the values you want.
-* Build this project. In the same directory as `Cargo.toml`, run `cargo build --release` in your terminal.
-* Run it. Use `cargo run` any number of times and see what this program thinks pi is.
+* Build and run this project. In the same directory as `Cargo.toml`, use `cargo run --release` in your terminal.
+* Rerun this any number of times and see what this program thinks pi is.
 
 ## License
 pi_overkill source code is licensed under GNU GPLv3+. See LICENSE.
