@@ -10,6 +10,9 @@
  * progress update
  * verbose mode (show updates on timeline?)
  * just-output-result mode for "bash scripting"
+ *
+ * BIG TODO:
+ * do this on GPU (OpenCL?)
  */
 use num::integer::gcd;
 use rand::distributions::{Distribution, Uniform};
@@ -35,7 +38,7 @@ fn main() {
         }));
     }
     threads.push(thread::spawn(move || {
-        count_coprimes(&num_iterations, num_threads - 1, tx.clone());
+        count_coprimes(&num_iterations, num_threads - 1, tx);
     }));
 
     // get results from threads

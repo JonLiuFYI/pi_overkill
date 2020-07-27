@@ -1,4 +1,4 @@
-# pi_overkill 0.2.1
+# pi_overkill 0.2.2
 © Copyright 2020 JonLiuFYI
 
 Discover the value of pi the long way. Fun fact: the probability of two random positive integers being coprime is `6 / pi^2`.
@@ -20,6 +20,9 @@ pi_overkill is distributed in the hope that it will be useful, but WITHOUT ANY W
 You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
 
 ## Changelog
+### 0.2.2
+* Removed an unnecessary instance of cloning the Sender
+
 ### 0.2.1
 * Fixed off-by-one error that made one too many Senders
 * Display more information about the pi estimate
