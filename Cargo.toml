@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 rand = "0.7"
 num = "0.3"
+clap = "~2.33.3"

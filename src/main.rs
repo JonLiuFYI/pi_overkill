@@ -4,9 +4,6 @@
  * main.rs is licensed under GPL v3+.
  *
  * TODO:
- * command line args
- *  * choose iters per thread
- *  * choose number of threads
  * progress update
  * verbose mode (show updates on timeline?)
  * just-output-result mode for "bash scripting"
@@ -19,12 +16,39 @@ use rand::distributions::{Distribution, Uniform};
 use std::f64::consts::PI;
 use std::sync::mpsc;
 use std::thread;
+use clap::{App, Arg};
 
 fn main() {
+    let args = App::new("pi_overkill")
+        .version("0.3.0")
+        .author("JonLiuFYI")
+        .about("Iteratively determine the value of pi using Matt Parker's Pi Day 2017 algorithm")
+        .arg(Arg::with_name("iters")
+            .help("Number of iterations per thread. Must be positive.")
+            .short("i")
+            .long("iters")
+            .takes_value(true)
+            .required(true))
+        .arg(Arg::with_name("threads")
+            .help("Number of threads to create for calculating pi.")
+            .short("t")
+            .long("threads")
+            .takes_value(true)
+            .required(true))
+        .get_matches();
+
     // parameters
     // ==========
-    let num_iterations: u32 = 4_000_000;
-    let num_threads = 12;
+    let num_iterations: u32 = match args.value_of("iters").unwrap().parse() {
+        Err(_) => panic!("`--iter` ERROR: Number of iterations must be a positive integer!"),
+        Ok(0) => panic!("`--iter` ERROR: Number of iterations can't be zero! It must be a positive integer."),
+        Ok(i) => i,
+    };
+    let num_threads: u32 = match args.value_of("threads").unwrap().parse() {
+        Err(_) => panic!("`--threads` ERROR: Number of threads must be a positive integer!"),
+        Ok(0) => panic!("`--threads` ERROR: Number of threads can't be zero! It must be a positive integer."),
+        Ok(t) => t,
+    };
 
     let (tx, rx) = mpsc::channel();
 
