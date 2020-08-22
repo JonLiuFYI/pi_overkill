@@ -6,7 +6,7 @@ Discover the value of pi the long way. Fun fact: the probability of two random p
 Made in Rust.
 
 ## Usage
-* Change the parameterss at the top of the `main` function of main.rs to the values you want.
+* Change the parameters at the top of the `main` function of main.rs to the values you want.
 * Build and run this project. Use `cargo run --release` in your terminal.
 * Rerun this any number of times and see what this program thinks pi is.
 
